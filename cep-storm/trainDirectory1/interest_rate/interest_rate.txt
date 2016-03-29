@@ -1,0 +1,6 @@
+bank rate
+discount rate
+interest
+interest rate
+lending rate
+Libor

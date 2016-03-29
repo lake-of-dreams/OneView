@@ -1,0 +1,13 @@
+base rate
+borrower
+collateral
+credit
+credit limit
+credit rating
+lending rate
+Libor
+money market
+mortgage
+sub-prime
+EMI
+Installment

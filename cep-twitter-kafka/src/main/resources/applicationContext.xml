@@ -1,0 +1,35 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+         	http://www.springframework.org/schema/context
+         	http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/task  
+   			http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<context:property-placeholder location="classpath*:configuration.properties" system-properties-mode="ENVIRONMENT"/>
+<!-- 
+	<context:mbean-export registration="replaceExisting" />
+ -->
+	<task:annotation-driven executor="executor" scheduler="scheduler"/>
+	<task:executor id="executor" pool-size="5"/>
+	<task:scheduler id="scheduler" pool-size="10"/>
+
+	<bean id="filterStreamCollector" destroy-method="stop"
+		class="com.rsinghal.cep.sample.twitter.StreamCollector">
+		<property name="kafkaHostname" value="${kafka.hostname}" />
+		<property name="kafkaPort" value="${kafka.port}" />
+		<property name="kafkaTopicName" value="${kafka.topicName11}" />
+		<property name="consumerKey" value="${twitter.consumerKey}"/>
+		<property name="consumerSecret" value="${twitter.consumerSecret}"/>
+		<property name="accessToken" value="${twitter.accessToken}"/>
+		<property name="accessTokenSecret" value="${twitter.accessTokenSecret}"/>
+		<property name="trackTerms" value="${trackTerms}"/>
+
+		<property name="numberOfProcessingThreads" value="5" />
+
+	</bean>
+
+</beans>

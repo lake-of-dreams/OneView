@@ -1,0 +1,54 @@
+contributors String,
+createdAt String,
+createdAtAsLong long,
+currentUserRetweetId long,
+id long primary key,
+inReplyToScreenName String,
+inReplyToStatusId long,
+inReplyToUserId long,
+retweetCount long,
+source String,
+String ascii,
+isFavorited boolean,
+isPossiblySensitive boolean,
+isRetweet boolean,
+isRetweetedByMe boolean,
+isTruncated boolean,
+coordinatesLatitude double,
+coordinatesLongitude double,
+user_URL String,
+user_streetAddress String,
+user_placeType String,
+user_name String,
+user_fullName String,
+user_id String,
+user_country String,
+user_countryCode String,
+location_URL String,
+location_streetAddress String,
+location_placeType String,
+location_name String,
+location_fullName String,
+location_id String,
+location_country String,
+location_countryCode String,
+
+
+alter table spark_streaming_twitter_1.all_tweets add user_id bignint;
+  alter table spark_streaming_twitter_1.all_tweets add user_screenName text;
+  alter table spark_streaming_twitter_1.all_tweets add user_createdAt text;
+  alter table spark_streaming_twitter_1.all_tweets add user_followersCount int;
+  alter table spark_streaming_twitter_1.all_tweets add user_friendsCount int;
+  alter table spark_streaming_twitter_1.all_tweets add user_listedCount int;
+  alter table spark_streaming_twitter_1.all_tweets add user_profileImageURL text;
+  alter table spark_streaming_twitter_1.all_tweets add user_statusesCount int;
+  alter table spark_streaming_twitter_1.all_tweets add user_verified boolean;
+  
+
+  alter table spark_streaming_twitter_1.all_tweets drop screenName ;
+  alter table spark_streaming_twitter_1.all_tweets drop followersCount ;
+  alter table spark_streaming_twitter_1.all_tweets drop friendsCount ;
+  alter table spark_streaming_twitter_1.all_tweets drop listedCount ;
+  alter table spark_streaming_twitter_1.all_tweets drop profileImageURL ;
+  alter table spark_streaming_twitter_1.all_tweets drop statusesCount ;
+  alter table spark_streaming_twitter_1.all_tweets drop verified ;

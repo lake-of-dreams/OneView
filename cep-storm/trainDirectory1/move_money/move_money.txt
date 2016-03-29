@@ -1,0 +1,20 @@
+BIPS
+commission
+credit transfer
+debit
+depositor
+draft
+EFTPOS
+overdraft
+overdrawn
+standing order
+direct debit
+payer
+payee
+payment
+transfer
+third party transfer
+bill pay
+bill payment
+cheque
+payment date

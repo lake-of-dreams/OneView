@@ -1,0 +1,74 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xsi:schemaLocation="
+         	http://www.springframework.org/schema/context
+         	http://www.springframework.org/schema/context/spring-context.xsd
+			http://www.springframework.org/schema/beans
+			http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+			http://www.springframework.org/schema/task  
+   			http://www.springframework.org/schema/task/spring-task-3.0.xsd">
+
+	<context:property-placeholder location="classpath*:configuration.properties" system-properties-mode="ENVIRONMENT"/>
+<!-- 
+	<context:mbean-export registration="replaceExisting" />
+ -->
+	<task:annotation-driven executor="executor" scheduler="scheduler"/>
+	<task:executor id="executor" pool-size="5"/>
+	<task:scheduler id="scheduler" pool-size="10"/>
+
+	<bean id="filterStreamCollector" destroy-method="stop"
+		class="com.rsinghal.cep.sample.twitter.StreamCollector1">
+		<property name="kafkaHostname" value="azcep02" />
+                <property name="kafkaPort" value="9092" />
+                <property name="kafkaTopicName" value="cep-kafka-1-topic-1" />
+                <property name="consumerKey" value="PGe8FSPDyWTxzIQjOJgUKtrLG"/>
+                <property name="consumerSecret" value="XJoaZFLzbZR2a9xkVi550r2jLPqpAS6FOAHbnSWreiNSsPG7jV"/>
+                <property name="accessToken" value="197400536-PANuSlInoddxnE99Q9JumZZqrni3ltCLQ7lO1t84"/>
+                <property name="accessTokenSecret" value="5uE7vEhvfBx9YWecr7pyeW3M63l7zpkhD2eYldlxCqid6"/>
+		 <property name="trackTerms">
+                <list>
+                <value>@RBS_Help</value>
+                <value>@NatWest_Help</value>
+<!--<value>@shunyavadi</value>-->
+<value>@RBSGroup</value>
+<value>@NatWestBusiness</value>
+<value>@RBSBusiness</value>
+<value>@AskLloydsBank</value>
+<value>@HSBCUKBusiness</value>
+<value>@TSB</value>
+<value>@iombank</value>
+<value>@NatWestIOM</value>
+<value>@NatWestComm</value>
+<value>@UlsterBank_Help</value>
+<value>@UlsterBank</value>
+<value>@HSBC_UK</value>
+<value>@HSBC_UK_Help</value>
+<value>@firstdirect</value>
+<value>@firstdirecthelp</value>
+<value>@mandsbankhelp</value>
+<value>@Lloydbanks</value>
+<value>@AskBankOfScot</value>
+<value>@AskHalifaxBank</value>
+<value>@BarclaysUKHelp</value>
+<value>@CoopBankUK</value>
+<value>@CoopBankUK_help</value>
+<value>@Metro_Bank</value>
+<value>@MetroBank_Help</value>
+<value>@AskNationwide</value>
+<value>@santanderuk</value>
+<value>@santanderukhelp</value>
+<value>@VirginMoney</value>
+<value>@askVirginMoney</value>
+<value>@Sainsburys_Bank</value>
+<value>@tescobankhelp</value>
+<value>@clydesdalebank</value>
+<value>@askclydesdale</value>
+                </list>
+                </property>
+
+		<property name="numberOfProcessingThreads" value="15" />
+
+	</bean>
+
+</beans>
